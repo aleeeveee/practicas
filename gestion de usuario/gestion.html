@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Usuarios</title>
+  <link rel="stylesheet" href="gestion.css" />
+</head>
+<body>
+  <div class="top-right">Usuario</div>
+
+  <div class="header">Gestión de Usuarios</div>
+
+  <!-- 🔍 Búsqueda y filtros -->
+  <div class="card">
+    <div class="input-section">
+      <input type="text" id="busqueda" placeholder="Buscar por nombre o usuario" oninput="filtrarUsuarios()" />
+      <select id="filtroRol" onchange="filtrarUsuarios()">
+        <option value="">Todos los roles</option>
+        <option value="Trabajador">Trabajador</option>
+        <option value="Jefe sucursal">Jefe sucursal</option>
+      </select>
+      <select id="filtroSucursal" onchange="filtrarUsuarios()">
+        <option value="">Todas las sucursales</option>
+        <option value="Belgrano">Belgrano</option>
+        <option value="Palermo">Palermo</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 👥 Tabla de usuarios -->
+  <div class="card">
+    <h2>Lista de usuarios existentes</h2>
+    <table class="table" id="tabla-usuarios">
+      <tr>
+        <th>Nombre</th>
+        <th>Usuario</th>
+        <th>Rol</th>
+        <th>Sucursal</th>
+        <th>Estado</th>
+        <th>Contraseña</th>
+        <th>Acciones</th>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ✏️ Edición de usuario -->
+  <div class="card">
+    <h2>Editar usuario</h2>
+    <div class="input-section">
+      <label>Nombre</label>
+      <input type="text" id="nombre" />
+
+      <label>Usuario</label>
+      <input type="text" id="usuario" disabled />
+
+      <label>Rol</label>
+      <input type="text" id="rol" />
+
+      <label>Sucursal</label>
+      <input type="text" id="sucursal" />
+
+      <label>Contraseña</label>
+      <div class="password-wrapper">
+        <input type="password" id="contrasena" />
+        <button type="button" onclick="togglePassword()">👁️</button>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button class="button" onclick="confirmarEdicion()">Confirmar</button>
+    </div>
+  </div>
+
+  <!-- ➕ Agregar nuevo usuario -->
+  <div class="card">
+    <h2>Agregar nuevo usuario</h2>
+    <div class="input-section">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre">
+      
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario">
+      
+        <label for="rol">Rol</label>
+        <input type="text" id="rol" name="rol">
+      
+        <label for="sucursal">Sucursal</label>
+        <input type="text" id="sucursal" name="sucursal">
+      
+        <label for="contrasena">Contraseña</label>
+        <input type="text" id="contrasena" name="contrasena">
+    </div>
+    <div style="text-align:center;">
+      <button class="button" onclick="agregarUsuario()">Agregar</button>
+    </div>
+  </div>
+
+  <!-- 📜 Historial -->
+  <div class="card">
+    <h2>Historial de gestión de usuarios</h2>
+    <table class="table" id="tabla-historial">
+      <tr>
+        <th>Fecha</th>
+        <th>Hecho por</th>
+        <th>Descripción del cambio</th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="floating-chat">💬</div>
+
+  <script src="gestion.js"></script>
+</body>
+</html>
